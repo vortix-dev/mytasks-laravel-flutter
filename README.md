@@ -7,7 +7,7 @@
 ## 🔧 Technologies Used
 
 - **Backend**: Laravel 11 + Sanctum (for API authentication)
-- **Mobile App**: Kotlin
+- **Mobile App**: Flutter
 - **Database**: MySQL
 
 ---
