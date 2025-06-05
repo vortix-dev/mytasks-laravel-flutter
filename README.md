@@ -1,3 +1,6 @@
+```bash
+https://api-mytasks.x10.mx/
+```
 # 📝 MyTasks
 
 **MyTasks** is a simple and powerful task management application built with Laravel (API), React (Web), and Flutter (Mobile). It helps users create, manage, and track their daily to-do lists with ease.
@@ -17,11 +20,7 @@
 ### ✅ For Users:
 - Register & Login
 - Create, update, and delete tasks
-- Mark tasks as done/undone
-- Filter tasks by status (all, completed, pending)
-- Set due dates & priorities
 - Responsive UI (Web) / Clean UI (Mobile)
-- Dark mode (optional)
 
 ### 🔒 Authentication:
 - Token-based API authentication using Laravel Sanctum
