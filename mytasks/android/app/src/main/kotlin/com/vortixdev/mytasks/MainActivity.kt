@@ -1,4 +1,4 @@
-package com.example.mytasks
+package com.vortixdev.mytasks
 
 import io.flutter.embedding.android.FlutterActivity
 

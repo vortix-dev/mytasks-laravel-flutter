@@ -1,33 +1,41 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'home_screen.dart';
 import 'login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
+  double _opacity = 0.0;
+
   @override
   void initState() {
     super.initState();
 
-    Timer(Duration(seconds: 3), () async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString('token');
+    Future.delayed(const Duration(milliseconds: 100), () {
+      setState(() {
+        _opacity = 1.0;
+      });
+    });
 
-      if (token != null) {
+    Future.delayed(const Duration(seconds: 2, milliseconds: 500), () async {
+      final token = await _secureStorage.read(key: 'token');
+
+      if (token != null && token.isNotEmpty) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
+          MaterialPageRoute(builder: (_) => const HomeScreen()),
         );
       } else {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => LoginScreen()),
+          MaterialPageRoute(builder: (_) => const LoginScreen()),
         );
       }
     });
@@ -36,12 +44,46 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF070710),
       body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(120),
-          color: Colors.grey.shade300, // لتوضيح المساحة المحيطة
-          child: Image.asset('assets/icon.png', width: 150, height: 150),
+        child: TweenAnimationBuilder(
+          tween: Tween<double>(begin: 0.5, end: 1.0),
+          duration: const Duration(seconds: 2),
+          curve: Curves.easeOut,
+          builder: (context, scale, child) {
+            return AnimatedOpacity(
+              opacity: _opacity,
+              duration: const Duration(seconds: 2),
+              child: Transform.scale(
+                scale: scale,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/icon.png', width: 150, height: 150),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'MyTasks',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Transform Your Productivity',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        color: Color(0xFFA0A0C0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

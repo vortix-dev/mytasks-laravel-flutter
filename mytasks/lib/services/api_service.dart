@@ -3,7 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const baseUrl = 'http://192.168.1.24:8000/api';
+  static const baseUrl = 'https://api-mytasks.x10.mx/api';
   static final storage = FlutterSecureStorage();
 
   // تسجيل الدخول
