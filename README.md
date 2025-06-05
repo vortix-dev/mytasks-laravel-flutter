@@ -34,5 +34,5 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/mytasks.git
+git clone https://github.com/vortix-dev/mytasks.git
 cd mytasks
