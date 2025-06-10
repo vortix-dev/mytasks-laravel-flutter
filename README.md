@@ -26,7 +26,18 @@ https://api-mytasks.x10.mx/
 - Token-based API authentication using Laravel Sanctum
 
 ---
+## 📱 Screenshots
 
+### Login 
+![Login Screen](screenshots/login.png)
+
+### Register
+![Register Screen](screenshots/register.png)
+
+### Todo
+![Tasks Screen](screenshots/tasks.png)
+
+---
 ## 🚀 Installation Guide
 
 ### 1. Clone the Repository
