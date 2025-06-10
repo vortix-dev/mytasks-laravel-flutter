@@ -43,5 +43,5 @@ https://api-mytasks.x10.mx/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/vortix-dev/mytasks.git
+git clone https://github.com/vortix-dev/mytasks-laravel-flutter.git
 cd mytasks
